@@ -1,0 +1,57 @@
+#!/bin/python3.9.4
+#Ian Outhwaite, 2021
+#082521
+#param_scans.py
+#runs tests for the JS distance protocol using the PKIS2 dataset
+
+import JS_singletarget_70potency as JS
+import pandas as pd
+import numpy as np
+import sys
+import openpyxl
+
+if __name__ == "__main__":
+
+    dataset1=pd.read_excel("./Fabian_dataset_2005_EPHS.xlsx", engine='openpyxl', nrows=20)
+    dataset1.name = 'Fabian'
+    dataset2=pd.read_excel("./Karaman_dataset_2008_EPHS.xlsx", engine='openpyxl', nrows=38)
+    dataset2.name = 'Karaman'
+    dataset3=pd.read_excel("./PKIS2_dataset_EPHS.xlsx", engine='openpyxl', nrows=645)
+    dataset3.name = 'PKIS2'
+
+    datasets = [dataset1, dataset2, dataset3]
+
+    prior_type = 2
+    bdist_alpha = 3
+    bdist_beta = 1
+    mu = 200
+    size = 10000
+    prior_settings = (prior_type, (bdist_alpha, bdist_beta, mu, size))
+    noise_variance = 5
+    max_combination_iter = 5
+    influence = 0.0
+    output_name = ''
+    num_p = 10
+
+    if len(sys.argv) > 1:
+        print('Number of processes to use: ' + str(sys.argv[1]))
+        num_p = int(sys.argv[1])
+
+
+    ##################### Experiment: Repeat 5x
+
+    for x in range(0,5):
+
+        for d in datasets:
+
+            for mu in [500,1000]:
+
+                if d.name == 'PKIS2':
+                    max_combination_iter = 3
+                else:
+                    max_combination_iter = 5
+
+                output_name = str(d.name) + '_' + str(x) + '_mu_' + str(mu)
+                new_prior_settings = (prior_type, (bdist_alpha, bdist_beta, mu, size))
+                JS.main_function(d,new_prior_settings,noise_variance,max_combination_iter,influence,output_name,num_p)
+    
