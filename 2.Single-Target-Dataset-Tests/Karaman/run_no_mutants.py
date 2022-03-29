@@ -17,7 +17,7 @@ if __name__ == "__main__":
     # Note, dataset must have the same formatting as the excel file for the PKIS2 dataset.
     # User should add null values for some of the initial daata descriptions (ex: chemotype family) if not present in the dataset to ensure overal formatting is consistent.
     
-     dataset_Karaman=pd.read_excel("./110421_Karaman_2008_dataset.xlsx", engine='openpyxl', nrows=38)
+    dataset_Karaman=pd.read_excel("./110421_Karaman_2008_dataset.xlsx", engine='openpyxl', nrows=38)
                                 
     print(dataset_Karaman)
 
@@ -62,7 +62,7 @@ if __name__ == "__main__":
     
         excel_prefix = '032822_Karaman_90thresh_x'+str(x)+'_'
 
-        for new_mu in np.arange(200,700):
+        for new_mu in [200,700]:
             output_name = excel_prefix + 'poisson_' + str(new_mu)
             new_prior_type = 2
             new_prior_settings = (new_prior_type, (bdist_alpha, bdist_beta, new_mu, size))

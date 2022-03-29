@@ -108,7 +108,6 @@ def get_indicies_to_exclude(names_to_exclude, dataset):
     inds = []
     for name in names_to_exclude:
         inds.append(names.index(name))
-    print (inds)
     return inds
     
 # Given a set of inhibition values and inhibitor concentrations against a single target, returns the total inhibition at a single target
