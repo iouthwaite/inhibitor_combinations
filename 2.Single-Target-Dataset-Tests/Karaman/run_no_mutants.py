@@ -35,7 +35,7 @@ if __name__ == "__main__":
     on_target_inhibition_threshold = 90 #the minimum on-target activity required for inhibitors. Try 90, 80, 70 as desired
     number_top_UW_scores_to_maximize = 5 #the top number_top_UW_scores_to_maximize unweighed combinations to select for the subsequent inhibitor concentration optimization step. We suggest using 3 or 5 - only in very rare instances would a combination that doesn't perform well in unweighed scoring perform exceptionally better in weighed scoring, and reducing the number of combinations to optimize speeds up processing time at this step linearly.
     noise_variance = 2.5 #the variance of the gaussian noise added to measurments
-    max_combination_iter = 3 #the maximum number of inhibitor combinations to try (ex: 3 means using 3 inhibitors together in one mix)
+    max_combination_iter = 5 #the maximum number of inhibitor combinations to try (ex: 3 means using 3 inhibitors together in one mix)
     influence = 0.1 #the weight that is used to add an additional penalty to the highest off-target effects (in the [95, 100] bin). We advise using a value of 0.1.
     R1_step = 5
     R2_step = 1.1
@@ -60,7 +60,7 @@ if __name__ == "__main__":
 
     for x in range(0,5):
     
-        excel_prefix = '032822_Karaman_90thresh_x'+str(x)+'_'
+        excel_prefix = '032922_Karaman_90thresh_x'+str(x)+'_'
 
         for new_mu in [200,700]:
             output_name = excel_prefix + 'poisson_' + str(new_mu)
