@@ -17,24 +17,14 @@ if __name__ == "__main__":
     # Note, dataset must have the same formatting as the excel file for the PKIS2 dataset.
     # User should add null values for some of the initial daata descriptions (ex: chemotype family) if not present in the dataset to ensure overal formatting is consistent.
     
-    dataset_Karaman=pd.read_excel("./2011_Davis_dataset_formatted_human_kinases_only.xlsx", engine='openpyxl', nrows=74)
+    dataset_D=pd.read_excel("./2011_Davis_dataset_formatted_human_kinases_only.xlsx", engine='openpyxl', nrows=74)
                                 
-    print(dataset_Karaman)
+    print(dataset_D)
 
     ######################## Define names of targets NOT to include in the off-target profiles (ex: disease relevant mutants)
 
     Davis_names = ['ABL1(E255K)-phosphorylated',	'ABL1(F317I)-nonphosphorylated',	'ABL1(F317I)-phosphorylated',	'ABL1(F317L)-nonphosphorylated',	'ABL1(F317L)-phosphorylated',	'ABL1(H396P)-nonphosphorylated',	'ABL1(H396P)-phosphorylated',	'ABL1(M351T)-phosphorylated'	,'ABL1(Q252H)-nonphosphorylated',	'ABL1(Q252H)-phosphorylated',	'ABL1(T315I)-nonphosphorylated',	'ABL1(T315I)-phosphorylated',	'ABL1(Y253F)-phosphorylated',	'ABL1-nonphosphorylated',	'ABL1-phosphorylated' ,'BRAF(V600E)', 'EGFR(E746-A750del)'	,'EGFR(G719C)',	'EGFR(G719S)'	,'EGFR(L747-E749del, A750P)'	,'EGFR(L747-S752del, P753S)',	'EGFR(L747-T751del,Sins)',	'EGFR(L858R)'	,'EGFR(L858R,T790M)'	,'EGFR(L861Q)',	'EGFR(S752-I759del)',	'EGFR(T790M)','FGFR3(G697C)', 'FLT3(D835H)',	'FLT3(D835Y)'	,'FLT3(ITD)'	,'FLT3(K663Q)',	'FLT3(N841I)',	'FLT3(R834Q)', 'KIT(A829P)',	'KIT(D816H)',	'KIT(D816V)',	'KIT(L576P)',	'KIT(V559D)',	'KIT(V559D,T670I)',	'KIT(V559D,V654A)', 'LRRK2(G2019S)',
 'MET(M1250T)',	'MET(Y1235D)', 'PIK3CA(C420R)',	'PIK3CA(E542K)',	'PIK3CA(E545A)'	,'PIK3CA(E545K)'	,'PIK3CA(H1047L)',	'PIK3CA(H1047Y)',	'PIK3CA(I800L)'	,'PIK3CA(M1043I)'	,'PIK3CA(Q546K)' ,'RET(M918T)',	'RET(V804L)',	'RET(V804M)']
-
-
-
-
-
-
-
-
-
-
 
     ######################## USER DEFINED SETTINGS
     
@@ -65,7 +55,7 @@ if __name__ == "__main__":
 
     ##################### FIRST DATASET
         
-    dataset = dataset_Karaman
+    dataset = dataset_D
 
     ########## Variable Prior Tests: Repeat each 5x 
 
