@@ -27,11 +27,12 @@ A user may need to install some of these prior to executing scripts.
 Users can select from some preformatted datasets from prior studies:
 
 Datasets included in /datasets and preformatted:
-    Inhibitors considered for inclusion in PKIS2, https://doi.org/10.1371/journal.pone.0181585 (Supplemental Table 4)
-    Davis 2011, DOI: 10.1038/nbt.1990 (Supplemental Table 4, human kinases only)
-    Fabian 2005, DOI: 10.1038/nbt1068 (Supplemental Table 4)
-    Karaman 2008, DOI: 10.1038/nbt1358 (Supplemental Table 2)
-    Klaeger 2017, DOI: 10.1126/science.aan4368 (Supplemental Table 3: Kinobeads Drugmatrix by Protein)
+    
+    	A. Inhibitors considered for inclusion in PKIS2, DOI: 10.1371/journal.pone.0181585 (Supplemental Table 4)
+    	B. Davis 2011, DOI: 10.1038/nbt.1990 (Supplemental Table 4, human kinases only)
+    	C. Fabian 2005, DOI: 10.1038/nbt1068 (Supplemental Table 4)
+    	D. Karaman 2008, DOI: 10.1038/nbt1358 (Supplemental Table 2)
+    	E. Klaeger 2017, DOI: 10.1126/science.aan4368 (Supplemental Table 3: Kinobeads Drugmatrix by Protein)
 
 If a user wants to include their own data, please be sure to format it in the same way as the included datasets and input values on an activity scale
 
@@ -132,7 +133,7 @@ I'm getting JSD scores of 1! Are my inhibitors perfectly selective?
 >No this does not mean that an inhibitor is perfectly selective -- it just means that, given the range of off-targets being scored using the particular penalty prior for that analysis, there were no off-target effects in the activity range following dilution of the inhibitor(s) to minimal on-target activity. If you know that there are off-targets and want to score these with better precision, try increasing how broad the penalty prior is, for example, using a mu=1200 (or even 1700) value to better score low off-target effects.
 
 My JSD score for a combination is higher than for a single inhibitor. Does this mean that the combination is better?
->Not neceserrily -- we suggest conducting multiple technical replicates in order to statistically evaluate improvements in JSD score. We also suggest using an absolute-value cutoff since very small improvements may be non-meaningful in practice. The value that a user selected will depend on their use case and the data being studied.
+>Not necessarily. We suggest conducting multiple technical replicates in order to statistically evaluate improvements in JSD score. We also suggest using an absolute-value cutoff since very small improvements may be non-meaningful in practice. The value that a user selected will depend on their use case and the data being studied.
 
 What is a "good" JSD score?
 >This is relative, since it depends on the type of penalty prior being used and the number of possible off-targets. In general, using a more broad penalty prior (ex: mu=700 versus mu=200) will decrease the JSD score, since a greater range of off-target activities will be penalized. While it depends on numerous factors and hard cutoffs are not ideal, JSD scores above 0.9 generally reflect nicely selective compounds.
