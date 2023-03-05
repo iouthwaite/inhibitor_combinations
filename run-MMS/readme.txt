@@ -4,21 +4,11 @@ Running the MMS Method
 
 0. Download dependencies
 
+Use the enviroment.yaml located in /inhibitor_combinations
+
 These scripts are supported for python -v 3.9.13 with the following dependencies:
 
-numpy
-pandas
-openpyxl
-xlsxwriter
-itertools
-random
-statistics
-math
-scipy
-multiprocessing
-time
-
-A user may need to install some of these prior to executing scripts.
+numpy, pandas, openpyxl, xlsxwriter, itertools, random, statistics, math, scipy, multiprocessing
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
