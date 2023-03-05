@@ -56,14 +56,12 @@ if __name__ == "__main__":
     ################ user defined targets for multiple target analysis. For single target analysis this can be left blank.
     #                Ensure that case matches input dataset (and trailing whitespace in names in some cases)
 
-    target_kinases = ['AAK1','ACVR2A','ACVR2B']
+    target_kinases = []
 
     ################ user defined kinases not to include in off-target distributions (ex: disease relevant mutants in a dataset that wouldn't be relevent when considering off-target effects)
 
     non_off_target_kinases = []
     
-                            #['ABL1-nonphosphorylated','CSF1R-autoinhibited'] #ex: for PKIS2 dataset one might want to exclude these from off-targets
-
     ################ activity threshold for considering inhibitors for on-target inhibition. Input from 1->99. 90, 80, or 70 is suggested, depends on data and reference concentration frame.
 
     on_target_activity_threshold = 90
