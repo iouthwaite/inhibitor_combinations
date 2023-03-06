@@ -2,7 +2,7 @@
 Ian R. Outhwaite, Sukrit Singh, Benedict-Tilman Berger, Stefan Knapp,  John D. Chodera, Markus A. Seeliger\
 doi: https://doi.org/10.1101/2023.01.13.523972
 
-## Running the MMS Method
+## Using/Running the MMS Method
 Download the files in run_MMS/ to a working directory.\
 Instructions for running the MMS method are in the included in the `run_MMS/readme.md` file.\
 Please report any issues or problems here or to ian.outhwaite@stonybrookmedicine.edu
