@@ -15,26 +15,26 @@ numpy, pandas, openpyxl, xlsxwriter, itertools, random, statistics, math, scipy,
 
 Users can select from some preformatted datasets from prior studies:
 
-Datasets included in /datasets and preformatted:
+Datasets included in /datasets and preformatted:\
 A. Inhibitors considered for inclusion in PKIS2, DOI: 10.1371/journal.pone.0181585 (Supplemental Table 4)\
 B. Davis 2011, DOI: 10.1038/nbt.1990 (Supplemental Table 4, human kinases only)\
 C. Fabian 2005, DOI: 10.1038/nbt1068 (Supplemental Table 4)\
 D. Karaman 2008, DOI: 10.1038/nbt1358 (Supplemental Table 2)\
 E. Klaeger 2017, DOI: 10.1126/science.aan4368 (Supplemental Table 3: Kinobeads Drugmatrix by Protein)\
 
-If a user wants to include their own data, please be sure to format it in the same way as the included datasets and input values on an activity scale
+If a user wants to include their own data, please be sure to format it in the same way as the included datasets and input values on an activity scale.
 
-Specifically,
-	A. Label columns by targets and rows by compounds\
-	B. Label the column for compounds with 'Compound'\
-	C. Leave dummy columns in the same locations as in the preformatted datasets\
-	D. Convert inpout data to the activity scale, given a reference concentration frame. The program output concentrations will be relative to this input concentration frame.\
-	For example, given Kd values in nM and a desired reference concentration range of 
-	`1 uM activity = 100% / [(Kd/1,000 (M))+1]`
+Specifically,\
+A. Label columns by targets and rows by compounds\
+B. Label the column for compounds with 'Compound'\
+C. Leave dummy columns in the same locations as in the preformatted datasets\
+D. Convert inpout data to the activity scale, given a reference concentration frame. The program output concentrations will be relative to this input concentration frame.\
+For example, given Kd values in nM and a desired reference concentration range of 
+`1 uM activity = 100% / [(Kd/1,000 (M))+1]`
 
 ### 2. Set the parameters that you want to use
 
-Program parameters are as follows, and can be set in the script "MMS_run.py"
+Program parameters are as follows, and can be set in the script `MMS_run.py`
 
 	A. single, a boolean for single-target analysis (tests all targets in a dataset one by one) or multiple-target analysis (tests combinations for co-inhibiting multiple targets)
 
@@ -105,31 +105,31 @@ The program will create several output .xlsx files that can be converted to .csv
 
 ### 4. Troubleshooting and common issues
 
-> My output files are blank for certain combination numbers. Why is this?\
+> My output files are blank for certain combination numbers. Why is this?
 
 There were no possible combinations of inhibitors that could be used. For example, this is common at the i=1 condition for multiple-target analysis, since you would need to find a single inhibitor that is potent for all of your targets.
 
-> My JSD scores are decent but there are high off-target effects above 95%? What is going on?\
+> My JSD scores are decent but there are high off-target effects above 95%? What is going on?
 
 In certain rare cases early in testing we observed that the JSD score gets stuck if the concentration steps are too high and the off-target penalty for high off-target effects is relatively low. This leads to a subset of off-targets being potently inhibited in a single bin in the off-target probability distribution which is favorable when computing the JSD metric. We've since implemented changes to how we obtimize concentrations in order to prevent this from happening, and do not observe this behavior in out implementations, but we cannot account for all user cases. If this behavior is observed, try decreasing the "R1_step" parameter size, or increasing the "influence" parameter step size to ~0.3.
 
-> I'm getting JSD scores of 1! Are my inhibitors perfectly selective?\
+> I'm getting JSD scores of 1! Are my inhibitors perfectly selective?
 
 No this does not mean that an inhibitor is perfectly selective -- it just means that, given the range of off-targets being scored using the particular penalty prior for that analysis, there were no off-target effects in the activity range following dilution of the inhibitor(s) to minimal on-target activity. If you know that there are off-targets and want to score these with better precision, try increasing how broad the penalty prior is, for example, using a mu=1200 (or even 1700) value to better score low off-target effects.
 
-> My JSD score for a combination is higher than for a single inhibitor. Does this mean that the combination is better?\
+> My JSD score for a combination is higher than for a single inhibitor. Does this mean that the combination is better?
 
 Not necessarily. We suggest conducting multiple technical replicates in order to statistically evaluate improvements in JSD score. We also suggest using an absolute-value cutoff since very small improvements may be non-meaningful in practice. The value that a user selected will depend on their use case and the data being studied.
 
-> What is a "good" JSD score?\
+> What is a "good" JSD score?
 
 This is relative, since it depends on the type of penalty prior being used and the number of possible off-targets. In general, using a more broad penalty prior (ex: mu=700 versus mu=200) will decrease the JSD score, since a greater range of off-target activities will be penalized. While it depends on numerous factors and hard cutoffs are not ideal, JSD scores above 0.9 generally reflect nicely selective compounds.
 
-> The iterations during runtime sometimes drop and then go back up. What is up with that?\
+> The iterations during runtime sometimes drop and then go back up. What is up with that?
 
 The print call is specific to the current process, which doesn't always return in the order it was generated. In general however, the iters will increase, although sometimes this number may bounce around a little, and this does not affect program function.
 
-> The script is taking a prohibitively long time to run! Help!\
+> The script is taking a prohibitively long time to run! Help!
 
 The following can improve runtime
      A. Increase the R1_step size and use this first run as a screen to hone down in on combinations that might be beneficial which can be analyzed in a second smaller run with just select inhibitors and targets
