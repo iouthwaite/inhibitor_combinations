@@ -16,21 +16,20 @@ numpy, pandas, openpyxl, xlsxwriter, itertools, random, statistics, math, scipy,
 Users can select from some preformatted datasets from prior studies:
 
 Datasets included in /datasets and preformatted:\
-A. Inhibitors considered for inclusion in PKIS2, DOI: 10.1371/journal.pone.0181585 (Supplemental Table 4)\
-B. Davis 2011, DOI: 10.1038/nbt.1990 (Supplemental Table 4, human kinases only)\
-C. Fabian 2005, DOI: 10.1038/nbt1068 (Supplemental Table 4)\
-D. Karaman 2008, DOI: 10.1038/nbt1358 (Supplemental Table 2)\
-E. Klaeger 2017, DOI: 10.1126/science.aan4368 (Supplemental Table 3: Kinobeads Drugmatrix by Protein)\
+    A. Inhibitors considered for inclusion in PKIS2, DOI: 10.1371/journal.pone.0181585 (Supplemental Table 4)\
+    B. Davis 2011, DOI: 10.1038/nbt.1990 (Supplemental Table 4, human kinases only)\
+    C. Fabian 2005, DOI: 10.1038/nbt1068 (Supplemental Table 4)\
+    D. Karaman 2008, DOI: 10.1038/nbt1358 (Supplemental Table 2)\
+    E. Klaeger 2017, DOI: 10.1126/science.aan4368 (Supplemental Table 3: Kinobeads Drugmatrix by Protein)\
 
 If a user wants to include their own data, please be sure to format it in the same way as the included datasets and input values on an activity scale.
 
 Specifically,\
-A. Label columns by targets and rows by compounds\
-B. Label the column for compounds with 'Compound'\
-C. Leave dummy columns in the same locations as in the preformatted datasets\
-D. Convert inpout data to the activity scale, given a reference concentration frame. The program output concentrations will be relative to this input concentration frame.\
-For example, given Kd values in nM and a desired reference concentration range of 
-`1 uM activity = 100% / [(Kd/1,000 (M))+1]`
+    A. Label columns by targets and rows by compounds\
+    B. Label the column for compounds with 'Compound'\
+    C. Leave dummy columns in the same locations as in the preformatted datasets\
+    D. Convert inpout data to the activity scale, given a reference concentration frame. The program output concentrations will be relative to this input concentration frame.\
+    For example, given Kd values in nM and a desired reference concentration range of `1 uM activity = 100% / [(Kd/1,000 (M))+1]`
 
 ### 2. Set the parameters that you want to use
 
@@ -94,10 +93,10 @@ ADDITIONAL SETTINGS: users will generally not change these settings.
 
 ### 3. Executing the program
 
-After editing parameters in `MMS_run.py`, in your terminal, execute with the command `python MMS_run.py`
-   	A. Be sure that the path given to the input dataset matches what is in the `MMS_run.py` script
-   	B. Be sure that the script `MMS_run.py` is in your current directory (or that you call the relative path)
-   	C. Be sure that the script `MMS_methods.py` is in the same directory as `MMS_run.py`
+After editing parameters in `MMS_run.py`, in your terminal, execute with the command `python MMS_run.py`\
+    A. Be sure that the path given to the input dataset matches what is in the `MMS_run.py` script\
+    B. Be sure that the script `MMS_run.py` is in your current directory (or that you call the relative path)\
+    C. Be sure that the script `MMS_methods.py` is in the same directory as `MMS_run.py`\
 
 This will inititate the program, in that terminal. You can set the number of procs to call by adding that number after the command if desired, this will overwrite the setting in the MMS_run.py file. Ex: "`python MMS_run.py 20`
 
@@ -131,9 +130,9 @@ The print call is specific to the current process, which doesn't always return i
 
 > The script is taking a prohibitively long time to run! Help!
 
-The following can improve runtime
-     A. Increase the R1_step size and use this first run as a screen to hone down in on combinations that might be beneficial which can be analyzed in a second smaller run with just select inhibitors and targets
-     B. Incrase the number of procs called (this will not always help and depends on your workstation setup)
-     C. If certain targets are very promiscuous they will have lots of possible combinations. If you don't care about these targets, removing them from the analysis will speed up processing for all the other targets.
-     D. Increasing the on-target threshold will decrease the number of inhibitors considered and improve runtime, although this may not be desireable depending upon the use case
-     E. Generating high combinations of inhibitors can take a long time, and depending upon the data, may not yield an improvement in the score. We suggest using n+2 over the number of targets (ex: up to three inhibitors for a single target, five for triplets of targets) at most before exploring higher combination numbers.                   
+The following can improve runtime:\
+    A. Increase the R1_step size and use this first run as a screen to hone down in on combinations that might be beneficial which can be analyzed in a second smaller run with just select inhibitors and targets\
+    B. Incrase the number of procs called (this will not always help and depends on your workstation setup)\
+    C. If certain targets are very promiscuous they will have lots of possible combinations. If you don't care about these targets, removing them from the analysis will speed up processing for all the other targets.\
+    D. Increasing the on-target threshold will decrease the number of inhibitors considered and improve runtime, although this may not be desireable depending upon the use case\
+    E. Generating high combinations of inhibitors can take a long time, and depending upon the data, may not yield an improvement in the score. We suggest using n+2 over the number of targets (ex: up to three inhibitors for a single target, five for triplets of targets) at most before exploring higher combination numbers.
