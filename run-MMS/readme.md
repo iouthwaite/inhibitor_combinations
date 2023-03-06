@@ -106,24 +106,31 @@ The program will create several output .xlsx files that can be converted to .csv
 ### 4. Troubleshooting and common issues
 
 > My output files are blank for certain combination numbers. Why is this?\
+
 There were no possible combinations of inhibitors that could be used. For example, this is common at the i=1 condition for multiple-target analysis, since you would need to find a single inhibitor that is potent for all of your targets.
 
 > My JSD scores are decent but there are high off-target effects above 95%? What is going on?\
+
 In certain rare cases early in testing we observed that the JSD score gets stuck if the concentration steps are too high and the off-target penalty for high off-target effects is relatively low. This leads to a subset of off-targets being potently inhibited in a single bin in the off-target probability distribution which is favorable when computing the JSD metric. We've since implemented changes to how we obtimize concentrations in order to prevent this from happening, and do not observe this behavior in out implementations, but we cannot account for all user cases. If this behavior is observed, try decreasing the "R1_step" parameter size, or increasing the "influence" parameter step size to ~0.3.
 
 > I'm getting JSD scores of 1! Are my inhibitors perfectly selective?\
+
 No this does not mean that an inhibitor is perfectly selective -- it just means that, given the range of off-targets being scored using the particular penalty prior for that analysis, there were no off-target effects in the activity range following dilution of the inhibitor(s) to minimal on-target activity. If you know that there are off-targets and want to score these with better precision, try increasing how broad the penalty prior is, for example, using a mu=1200 (or even 1700) value to better score low off-target effects.
 
 > My JSD score for a combination is higher than for a single inhibitor. Does this mean that the combination is better?\
+
 Not necessarily. We suggest conducting multiple technical replicates in order to statistically evaluate improvements in JSD score. We also suggest using an absolute-value cutoff since very small improvements may be non-meaningful in practice. The value that a user selected will depend on their use case and the data being studied.
 
 > What is a "good" JSD score?\
+
 This is relative, since it depends on the type of penalty prior being used and the number of possible off-targets. In general, using a more broad penalty prior (ex: mu=700 versus mu=200) will decrease the JSD score, since a greater range of off-target activities will be penalized. While it depends on numerous factors and hard cutoffs are not ideal, JSD scores above 0.9 generally reflect nicely selective compounds.
 
 > The iterations during runtime sometimes drop and then go back up. What is up with that?\
+
 The print call is specific to the current process, which doesn't always return in the order it was generated. In general however, the iters will increase, although sometimes this number may bounce around a little, and this does not affect program function.
 
 > The script is taking a prohibitively long time to run! Help!\
+
 The following can improve runtime
      A. Increase the R1_step size and use this first run as a screen to hone down in on combinations that might be beneficial which can be analyzed in a second smaller run with just select inhibitors and targets
      B. Incrase the number of procs called (this will not always help and depends on your workstation setup)
