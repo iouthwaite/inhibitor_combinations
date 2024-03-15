@@ -1,6 +1,6 @@
-# Death by a Thousand Cuts – Combining Kinase Inhibitors for Selective Target Inhibition and Rational Polypharmacology
+# Death by a thousand cuts through kinase inhibitor combinations that maximize selectivity and enable rational multitargeting
 Ian R. Outhwaite, Sukrit Singh, Benedict-Tilman Berger, Stefan Knapp,  John D. Chodera, Markus A. Seeliger\
-doi: https://doi.org/10.1101/2023.01.13.523972
+doi: [https://doi.org/10.1101/2023.01.13.523972](https://doi.org/10.7554/eLife.86189)
 
 ## Using/Running the MMS Method
 Download the files in run_MMS/ to a working directory.\
